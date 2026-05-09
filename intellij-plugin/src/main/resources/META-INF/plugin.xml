@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>com.aioptimizer.plugin</id>
+  <name>AI Copilot Optimizer</name>
+  <version>1.0.0</version>
+  <vendor email="support@aioptimizer.dev" url="https://github.com/org/ai-copilot-optimizer">
+    AI Copilot Optimizer
+  </vendor>
+
+  <description><![CDATA[
+    Reduces AI token usage for Java monolith development by caching semantically similar
+    queries locally via FAISS + Redis and falling back to OpenAI only when needed.
+  ]]></description>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow
+      id="AI Copilot Optimizer"
+      secondary="false"
+      icon="/icons/toolwindow.svg"
+      anchor="right"
+      factoryClass="com.aioptimizer.AiPromptToolWindowFactory" />
+
+    <applicationConfigurable
+      id="com.aioptimizer.settings"
+      displayName="AI Copilot Optimizer"
+      instance="com.aioptimizer.AiOptimizerSettingsConfigurable" />
+  </extensions>
+
+  <actions>
+    <action
+      id="com.aioptimizer.BuildAiPromptAction"
+      class="com.aioptimizer.BuildAiPromptAction"
+      text="Build Optimized AI Prompt"
+      description="Sends current Java file context to the AI Copilot Optimizer backend">
+      <add-to-group group-id="EditorPopupMenu" anchor="last" />
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt A" />
+    </action>
+  </actions>
+</idea-plugin>
