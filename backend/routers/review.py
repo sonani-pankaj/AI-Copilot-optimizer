@@ -34,7 +34,7 @@ async def review(
 
     try:
         raw, _ = await openai_service.complete(prompt, "REVIEW")
-    except RuntimeError as exc:
+    except RuntimeError:
         raise HTTPException(status_code=502, detail="Review service unavailable")
 
     # Parse JSON response

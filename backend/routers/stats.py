@@ -1,5 +1,5 @@
 # See: specs/backend/stats-endpoint.md
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query

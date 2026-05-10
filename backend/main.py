@@ -4,8 +4,6 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.ext.asyncio import AsyncEngine
-
 from .models.db import engine, Base
 from .routers import auth, query, upsert, stats, review
 from .services.faiss_service import faiss_service

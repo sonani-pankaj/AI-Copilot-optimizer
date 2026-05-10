@@ -1,12 +1,12 @@
 # See: specs/backend/query-endpoint.md
 import logging
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..auth.jwt import TokenData, verify_token
 from ..models.db import CacheEntry, RequestLog, get_db
-from ..models.schemas import PromptType, QueryRequest, QueryResponse
+from ..models.schemas import QueryRequest, QueryResponse
 from ..services import openai_service, redis_service, sanitizer
 from ..services.faiss_service import faiss_service
 
